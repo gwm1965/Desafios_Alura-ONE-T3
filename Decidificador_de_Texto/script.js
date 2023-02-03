@@ -1,17 +1,23 @@
 const inputTexto = document.querySelector(".input-texto");
 const mensagem = document.querySelector(".mensagem");
 
+const divDesaparece = document.querySelector('.boneco')
+const divAparece =document.querySelector('.mensagem') 
+const divMensagens = document.querySelector('.mensagens-box')
+const botaoCopiar = document.querySelector('.copiar') 
+
 
 function btnEncriptar(){
+    
+    divDesaparece.style.display = 'none';
+    divAparece.style.display = 'block';
+    divMensagens.style.display = 'none';
+    botaoCopiar.style.display = 'flex';
+    
     const textoEncriptado = encriptar(inputTexto.value)
-    mensagem.value = textoEncriptado
-    document.style.backgroundImage = "none"
-    console.log('Clicou!')
-}
-
-
-
-
+    mensagem.value = textoEncriptado 
+          
+}  
 
 function encriptar(stringEncriptada) {
    let matrizCodigo = [['e', 'enter'], ['i', 'imes'], ['a', 'ai'], ['o', 'ober'], ['u', 'ufat'] ];
@@ -41,6 +47,11 @@ function desencriptar(stringDesencriptada) {
          }
      }
      return stringDesencriptada;
+ }
+
+ function copiar() {
+    navigator.clipboard.writeText(mensagem.value)
+
  }
 
 //clipboard javascript
